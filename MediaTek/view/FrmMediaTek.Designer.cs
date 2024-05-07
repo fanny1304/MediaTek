@@ -31,12 +31,12 @@ namespace MediaTek.view
         {
             this.SuspendLayout();
             // 
-            // Form1
+            // FrmMediaTek
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Form1";
+            this.ClientSize = new System.Drawing.Size(829, 450);
+            this.Name = "FrmMediaTek";
             this.Text = " ";
             this.ResumeLayout(false);
 
