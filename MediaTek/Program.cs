@@ -17,7 +17,7 @@ namespace MediaTek
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMediaTek());
+            Application.Run(new FrmAuthentification());
         }
     }
 }

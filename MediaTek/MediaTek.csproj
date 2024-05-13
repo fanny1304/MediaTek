@@ -33,8 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.5.0, Culture=neutral, PublicKeyToken=0e99375e54769942" />
+    <Reference Include="Google.Protobuf, Version=3.19.4.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604" />
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.2.6.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d" />
+    <Reference Include="MySql.Data, Version=8.0.29.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,8 +53,27 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d" />
+    <Reference Include="ZstdNet, Version=1.4.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="mediatekDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>mediatekDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="view\FrmAbsences.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\FrmAbsences.Designer.cs">
+      <DependentUpon>FrmAbsences.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\FrmAuthentification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\FrmAuthentification.Designer.cs">
+      <DependentUpon>FrmAuthentification.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\FrmMediaTek.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +82,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="view\FrmAbsences.resx">
+      <DependentUpon>FrmAbsences.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\FrmAuthentification.resx">
+      <DependentUpon>FrmAuthentification.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\FrmMediaTek.resx">
       <DependentUpon>FrmMediaTek.cs</DependentUpon>
     </EmbeddedResource>
@@ -66,6 +100,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="mediatekDataSet.xsc">
+      <DependentUpon>mediatekDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="mediatekDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>mediatekDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="mediatekDataSet.xss">
+      <DependentUpon>mediatekDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
