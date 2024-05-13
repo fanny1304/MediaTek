@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\MediaTek.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -57,11 +58,17 @@
     <Reference Include="ZstdNet, Version=1.4.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="bddmanager\BddManager.cs" />
+    <Compile Include="dal\AccesDonnees.cs" />
     <Compile Include="mediatekDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>mediatekDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="model\Absence.cs" />
+    <Compile Include="model\Motif.cs" />
+    <Compile Include="model\Personnel.cs" />
+    <Compile Include="model\Service.cs" />
     <Compile Include="view\FrmAbsences.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,10 +132,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="bddmanager\" />
     <Folder Include="controller\" />
-    <Folder Include="dal\" />
-    <Folder Include="model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
