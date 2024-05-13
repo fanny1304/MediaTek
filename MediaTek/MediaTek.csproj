@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="bddmanager\BddManager.cs" />
+    <Compile Include="controleur\Controle.cs" />
     <Compile Include="dal\AccesDonnees.cs" />
     <Compile Include="mediatekDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -131,8 +132,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="controller\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

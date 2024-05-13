@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediaTek.controleur;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,20 @@ namespace MediaTek.view
 {
     public partial class FrmMediaTek : Form
     {
-        public FrmMediaTek()
+        /// <summary>
+        /// Instance du controleur
+        /// </summary>
+        private Controle controle;
+
+        /// <summary>
+        /// Initialisation des composants graphiques
+        /// </summary>
+        /// <param name="controle"></param>
+        public FrmMediaTek(Controle controle)
         {
             InitializeComponent();
+            this.controle = controle;
+            //Init();
         }
     }
 }

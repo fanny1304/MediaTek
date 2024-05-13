@@ -93,6 +93,7 @@ namespace MediaTek.view
             this.btnConnexion.TabIndex = 5;
             this.btnConnexion.Text = "Se connecter";
             this.btnConnexion.UseVisualStyleBackColor = true;
+            this.btnConnexion.Click += new System.EventHandler(this.btnConnexion_Click);
             // 
             // FrmAuthentification
             // 

@@ -19,14 +19,14 @@ namespace MediaTek.dal
         /// <returns>Vrai si les identifiants correspondent </returns>
         public static Boolean Authentification(string login, string pwd)
         {
-            string req = "SELECT * FROM responsable";
-            req += "WHERE login = @login AND pwd=SHA2(@pwd, 256);";
+            string req = "SELECT * FROM responsable ";
+            req += "WHERE login = @login AND pwd = SHA2(@pwd, 256);";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("@login", login);
             parameters.Add("@pwd", pwd);
-
             BddManager curseur = BddManager.GetInstance(connectionString);
             curseur.ReqSelect(req, parameters);
+
             if (curseur.Read())
             {
                 curseur.Close();
