@@ -10,8 +10,14 @@ using System.Windows.Forms;
 
 namespace MediaTek.view
 {
+    /// <summary>
+    /// Formulaire de gestion des absences 
+    /// </summary>
     public partial class FrmAbsences : Form
     {
+        /// <summary>
+        /// Constructeur 
+        /// </summary>
         public FrmAbsences()
         {
             InitializeComponent();

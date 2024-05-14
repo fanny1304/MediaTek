@@ -6,9 +6,18 @@ using System.Threading.Tasks;
 
 namespace MediaTek.model
 {
+    /// <summary>
+    /// Classe permettant de gérer les services
+    /// </summary>
     public class Service
     {
+        /// <summary>
+        /// Getter sur l'id du service 
+        /// </summary>
         public int idService { get; }
+        /// <summary>
+        /// Getter sur le nom du service 
+        /// </summary>
         public string Nom { get; }
 
         /// <summary>

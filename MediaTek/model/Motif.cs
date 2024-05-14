@@ -6,9 +6,18 @@ using System.Threading.Tasks;
 
 namespace MediaTek.model
 {
+    /// <summary>
+    /// Classe qui permet de gérer les motifs 
+    /// </summary>
     public class Motif
     {
+        /// <summary>
+        /// Getter sur l'id du motif
+        /// </summary>
         public int idMotif { get; }
+        /// <summary>
+        /// Getter sur l'id du libellé
+        /// </summary>
         public string Libelle { get; }
 
         /// <summary>

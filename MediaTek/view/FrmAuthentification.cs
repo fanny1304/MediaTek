@@ -16,7 +16,15 @@ namespace MediaTek.view
     /// </summary>
     public partial class FrmAuthentification : Form
     {
+        /// <summary>
+        /// Instance de la classe controle 
+        /// </summary>
         private Controle controle;
+
+        /// <summary>
+        /// Constructeur 
+        /// </summary>
+        /// <param name="controle"></param>
         public FrmAuthentification(Controle controle)
         {
             InitializeComponent();

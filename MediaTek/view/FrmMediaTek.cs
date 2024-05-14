@@ -11,6 +11,9 @@ using System.Windows.Forms;
 
 namespace MediaTek.view
 {
+    /// <summary>
+    /// Formulaire d'affichage des informations des personnels
+    /// </summary>
     public partial class FrmMediaTek : Form
     {
         /// <summary>
