@@ -18,27 +18,27 @@ namespace MediaTek.model
         /// <summary>
         /// Getter sur le nom du personnel
         /// </summary>
-        public string Nom { get; }
+        public string Nom { get; set; }
         /// <summary>
         /// Getter sur le prenom du personnel
         /// </summary>
-        public string Prenom { get; }
+        public string Prenom { get; set; }
         /// <summary>
         /// Getter sur le tel du personnel
         /// </summary>
-        public string Tel { get; }
+        public string Tel { get; set; }
         /// <summary>
         /// Getter sur le mail du personnel
         /// </summary>
-        public string Mail { get; }
+        public string Mail { get; set; }
         /// <summary>
         /// Getter sur l'id du service associé au personnel
         /// </summary>
-        public int idService { get; }
+        public int idService { get; set; }
         /// <summary>
         /// Getter sur le nom du service associé au personnel
         /// </summary>
-        public string Service { get; }
+        public string Service { get; set; }
         
         /// <summary>
         /// Constructeur de Personnel

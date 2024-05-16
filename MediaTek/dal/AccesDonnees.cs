@@ -50,38 +50,34 @@ namespace MediaTek.dal
         public static List<Personnel> GetLesPersonnels()
         {
             List<Personnel> lesPersonnels = new List<Personnel>();
+            string req = "select p.idpersonnel as idpersonnel, p.nom as nom, p.prenom as prenom, p.tel as tel, p.mail as mail, s.idservice as idservice, s.nom as service";
+            req += " from personnel p join service s on (p.idservice = s.idservice) ";
+            req += " order by p.nom, p.prenom;";
 
-            // Requête SQL
-            string req = "SELECT p.idpersonnel AS idpersonnel, p.nom AS nom, p.prenom AS prenom, p.mail AS mail, s.idservice AS idservice, s.nom AS service";
-            req += "FROM personnel AS p JOIN service s USING (idservice)";
-            req += "GROUP BY p.nom";
-            req += "ORDER BY p.nom;";
 
-            // executer la requête 
             BddManager curseur = BddManager.GetInstance(connectionString);
             curseur.ReqSelect(req, null);
-
             while (curseur.Read())
             {
                 Personnel personnel = new Personnel(
-                    (int)curseur.Field("idpersonnel"),
-                    (string)curseur.Field("nom"),
-                    (string)curseur.Field("prenom"),
-                    (string)curseur.Field("tel"),
-                    (string)curseur.Field("mail"),
-                    (int)curseur.Field("idservice"),
-                    (string)curseur.Field("service")                    
-                    );
+                    (int)curseur.Field("idpersonnel"), 
+                    (string)curseur.Field("nom"), 
+                    (string)curseur.Field("prenom"), 
+                    (string)curseur.Field("tel"), 
+                    (string)curseur.Field("mail"), 
+                    (int)curseur.Field("idservice"), 
+                    (string)curseur.Field("service"));
+
                 lesPersonnels.Add(personnel);
             }
             curseur.Close();
             return lesPersonnels;
         }
 
-       /// <summary>
-       /// Récupère et retourne les services provenant de la BDD
-       /// </summary>
-       /// <returns>Liste des services</returns>       
+        /// <summary>
+        /// Récupère et retourne les services provenant de la BDD
+        /// </summary>
+        /// <returns>Liste des services</returns>       
         public static List<Service> GetLesServices()
         {
             List<Service> lesServices = new List<Service>();
@@ -128,13 +124,11 @@ namespace MediaTek.dal
         /// <param name="personnel">Objet personnel à supprimer</param>
         public void DelPersonnel(Personnel personnel)
         {
-            string req = "DELETE FROM personnel";
-            req += "WHERE idpersonnel = @idpersonnel;";
+            string req = "DELETE FROM personnel WHERE idpersonnel = @idpersonnel;";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("@idpersonnel", personnel.idPersonnel);
-
-            BddManager connex = BddManager.GetInstance(connectionString);
-            connex.ReqUpdate(req, parameters);
+            BddManager conn = BddManager.GetInstance(connectionString);
+            conn.ReqUpdate(req, parameters);
         }
 
         /// <summary>
@@ -143,18 +137,19 @@ namespace MediaTek.dal
         /// <param name="personnel">objet personnel à modifier</param>
         public void UpdatePersonnel(Personnel personnel)
         {
-            string req = "UPDATE personnel SET nom = @nom, prenom = @prenom, tel = @tel, mail = @mail, idservice = @idservice";
-            req += "WHERE idpersonnel = @idpersonnel;";
+            string req = "UPDATE personnel SET nom = @nom, prenom = @prenom, tel = @tel, mail = @mail, idservice = @idservice WHERE idpersonnel = @idpersonnel";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@idpersonnel", personnel.idPersonnel);
             parameters.Add("@nom", personnel.Nom);
-            parameters.Add("@prenom", personnel.Nom);
+            parameters.Add("@prenom", personnel.Prenom);
             parameters.Add("@tel", personnel.Tel);
             parameters.Add("@mail", personnel.Mail);
             parameters.Add("@idservice", personnel.idService);
-            parameters.Add("@idpersonnel", personnel.idPersonnel);
 
-            BddManager connex = BddManager.GetInstance(connectionString);
-            connex.ReqUpdate(req, parameters);
+            BddManager curseur = BddManager.GetInstance(connectionString);
+            curseur.ReqUpdate(req, parameters);
+
+
         }
 
         /// <summary>
@@ -196,7 +191,7 @@ namespace MediaTek.dal
         /// </summary>
         /// <param name="absence">Objet absence à ajouter</param>
         /// <param name="idpersonnelSelec">Id du personnel concerné par l'absence </param>
-        public static void AddAbsence(Absence absence, int idpersonnelSelec)
+        public void AddAbsence(Absence absence, int idpersonnelSelec)
         {
             string req = "INSERT INTO absence (idpersonnel, datedebut, datefin, idmotif)";
             req += "VALUES(@idpersonnelSelec, @datedebut, @datefin, @idmotif);";
@@ -216,7 +211,7 @@ namespace MediaTek.dal
         /// </summary>
         /// <param name="absence">Objet absence à supprimer</param>
         /// <param name="idpersonnelSelec">Id du personnel concerné par l'absence</param>
-        public static void DelAbsence(Absence absence, int idpersonnelSelec)
+        public void DelAbsence(Absence absence, int idpersonnelSelec)
         {
             string req = "DELETE FROM absence ";
             req += "WHERE datedebut = @datedebut";
@@ -235,7 +230,7 @@ namespace MediaTek.dal
         /// <param name="absence">Objet absence à modifier</param>
         /// <param name="idpersonnelSelect">id du personnel concerné par l'absence</param>
         /// <param name="dateSelect">date concernée par l'absence </param>
-        public static void updateAbsence(Absence absence, int idpersonnelSelect, DateTime dateSelect)
+        public void updateAbsence(Absence absence, int idpersonnelSelect, DateTime dateSelect)
         {
             string req = "UPDATE absence SET datedebut = @datedebut, datefin = @datefin, idmotif = @idmotif";
             req += "WHERE idpersonnel = @idpersonnelSelect AND datedebut = @dateSelect;";
@@ -282,7 +277,7 @@ namespace MediaTek.dal
         /// <param name="nom">Nom du personnel selectionné</param>
         /// <param name="prenom">Prénom du personnel selectionné</param>
         /// <returns>Id du personnel sélectionné</returns>
-        public static int recupererIdPersonnel(string nom, string prenom)
+        public int recupererIdPersonnel(string nom, string prenom)
         {
             int idpersonnel = 0;
             string req = "SELECT idpersonnel FROM personnel";

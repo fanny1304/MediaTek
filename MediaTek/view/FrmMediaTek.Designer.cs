@@ -31,14 +31,12 @@ namespace MediaTek.view
         {
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.mediatekDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mediatekDataSet = new MediaTek.mediatekDataSet();
-            this.btnAjoutPers = new System.Windows.Forms.Button();
             this.btnModifPers = new System.Windows.Forms.Button();
             this.btnSuppPers = new System.Windows.Forms.Button();
             this.btnAbsences = new System.Windows.Forms.Button();
-            this.gpbAction = new System.Windows.Forms.GroupBox();
+            this.grbAction = new System.Windows.Forms.GroupBox();
             this.btnAnnPers = new System.Windows.Forms.Button();
             this.btnEnregPers = new System.Windows.Forms.Button();
             this.cboService = new System.Windows.Forms.ComboBox();
@@ -51,11 +49,12 @@ namespace MediaTek.view
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.lblAction = new System.Windows.Forms.Label();
+            this.dgvPersonnels = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.mediatekDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mediatekDataSet)).BeginInit();
-            this.gpbAction.SuspendLayout();
+            this.grbAction.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPersonnels)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -70,16 +69,6 @@ namespace MediaTek.view
             this.label1.TabIndex = 1;
             this.label1.Text = "Liste des personnels";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.DataSource = this.mediatekDataSetBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 37);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(590, 221);
-            this.dataGridView1.TabIndex = 2;
-            // 
             // mediatekDataSetBindingSource
             // 
             this.mediatekDataSetBindingSource.DataSource = this.mediatekDataSet;
@@ -90,68 +79,60 @@ namespace MediaTek.view
             this.mediatekDataSet.DataSetName = "mediatekDataSet";
             this.mediatekDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // btnAjoutPers
-            // 
-            this.btnAjoutPers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnAjoutPers.Location = new System.Drawing.Point(14, 264);
-            this.btnAjoutPers.Name = "btnAjoutPers";
-            this.btnAjoutPers.Size = new System.Drawing.Size(134, 25);
-            this.btnAjoutPers.TabIndex = 3;
-            this.btnAjoutPers.Text = "Ajouter un personnel";
-            this.btnAjoutPers.UseVisualStyleBackColor = true;
-            // 
             // btnModifPers
             // 
             this.btnModifPers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModifPers.Location = new System.Drawing.Point(154, 264);
+            this.btnModifPers.Location = new System.Drawing.Point(72, 264);
             this.btnModifPers.Name = "btnModifPers";
             this.btnModifPers.Size = new System.Drawing.Size(134, 25);
             this.btnModifPers.TabIndex = 4;
             this.btnModifPers.Text = "Modifier le personnel";
             this.btnModifPers.UseVisualStyleBackColor = true;
+            this.btnModifPers.Click += new System.EventHandler(this.btnModifPers_Click);
             // 
             // btnSuppPers
             // 
             this.btnSuppPers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSuppPers.Location = new System.Drawing.Point(294, 264);
+            this.btnSuppPers.Location = new System.Drawing.Point(217, 264);
             this.btnSuppPers.Name = "btnSuppPers";
             this.btnSuppPers.Size = new System.Drawing.Size(148, 25);
             this.btnSuppPers.TabIndex = 5;
             this.btnSuppPers.Text = "Supprimer le personnel";
             this.btnSuppPers.UseVisualStyleBackColor = true;
+            this.btnSuppPers.Click += new System.EventHandler(this.btnSuppPers_Click);
             // 
             // btnAbsences
             // 
             this.btnAbsences.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbsences.Location = new System.Drawing.Point(454, 264);
+            this.btnAbsences.Location = new System.Drawing.Point(375, 264);
             this.btnAbsences.Name = "btnAbsences";
             this.btnAbsences.Size = new System.Drawing.Size(136, 25);
             this.btnAbsences.TabIndex = 6;
             this.btnAbsences.Text = "Gérer les absences";
             this.btnAbsences.UseVisualStyleBackColor = true;
             // 
-            // gpbAction
+            // grbAction
             // 
-            this.gpbAction.Controls.Add(this.btnAnnPers);
-            this.gpbAction.Controls.Add(this.btnEnregPers);
-            this.gpbAction.Controls.Add(this.cboService);
-            this.gpbAction.Controls.Add(this.label7);
-            this.gpbAction.Controls.Add(this.txtMail);
-            this.gpbAction.Controls.Add(this.txtTel);
-            this.gpbAction.Controls.Add(this.txtPrenom);
-            this.gpbAction.Controls.Add(this.txtNom);
-            this.gpbAction.Controls.Add(this.label6);
-            this.gpbAction.Controls.Add(this.label5);
-            this.gpbAction.Controls.Add(this.label4);
-            this.gpbAction.Controls.Add(this.label3);
-            this.gpbAction.Controls.Add(this.label2);
-            this.gpbAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gpbAction.Location = new System.Drawing.Point(14, 311);
-            this.gpbAction.Name = "gpbAction";
-            this.gpbAction.Size = new System.Drawing.Size(588, 153);
-            this.gpbAction.TabIndex = 7;
-            this.gpbAction.TabStop = false;
-            this.gpbAction.Text = "Actions";
+            this.grbAction.Controls.Add(this.btnAnnPers);
+            this.grbAction.Controls.Add(this.btnEnregPers);
+            this.grbAction.Controls.Add(this.cboService);
+            this.grbAction.Controls.Add(this.label7);
+            this.grbAction.Controls.Add(this.txtMail);
+            this.grbAction.Controls.Add(this.txtTel);
+            this.grbAction.Controls.Add(this.txtPrenom);
+            this.grbAction.Controls.Add(this.txtNom);
+            this.grbAction.Controls.Add(this.label6);
+            this.grbAction.Controls.Add(this.label5);
+            this.grbAction.Controls.Add(this.label4);
+            this.grbAction.Controls.Add(this.label3);
+            this.grbAction.Controls.Add(this.lblAction);
+            this.grbAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grbAction.Location = new System.Drawing.Point(14, 306);
+            this.grbAction.Name = "grbAction";
+            this.grbAction.Size = new System.Drawing.Size(588, 153);
+            this.grbAction.TabIndex = 7;
+            this.grbAction.TabStop = false;
+            this.grbAction.Text = "Actions";
             // 
             // btnAnnPers
             // 
@@ -162,6 +143,7 @@ namespace MediaTek.view
             this.btnAnnPers.TabIndex = 12;
             this.btnAnnPers.Text = "Annuler";
             this.btnAnnPers.UseVisualStyleBackColor = true;
+            this.btnAnnPers.Click += new System.EventHandler(this.btnAnnPers_Click);
             // 
             // btnEnregPers
             // 
@@ -172,6 +154,7 @@ namespace MediaTek.view
             this.btnEnregPers.TabIndex = 11;
             this.btnEnregPers.Text = "Enregistrer";
             this.btnEnregPers.UseVisualStyleBackColor = true;
+            this.btnEnregPers.Click += new System.EventHandler(this.btnEnregPers_Click);
             // 
             // cboService
             // 
@@ -259,35 +242,42 @@ namespace MediaTek.view
             this.label3.TabIndex = 1;
             this.label3.Text = "Nom :";
             // 
-            // label2
+            // lblAction
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(7, 20);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(131, 15);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Ajouter un personnel :";
+            this.lblAction.AutoSize = true;
+            this.lblAction.Font = new System.Drawing.Font("Calibri", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAction.Location = new System.Drawing.Point(7, 20);
+            this.lblAction.Name = "lblAction";
+            this.lblAction.Size = new System.Drawing.Size(131, 15);
+            this.lblAction.TabIndex = 0;
+            this.lblAction.Text = "Ajouter un personnel :";
+            // 
+            // dgvPersonnels
+            // 
+            this.dgvPersonnels.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPersonnels.Location = new System.Drawing.Point(12, 37);
+            this.dgvPersonnels.Name = "dgvPersonnels";
+            this.dgvPersonnels.Size = new System.Drawing.Size(578, 221);
+            this.dgvPersonnels.TabIndex = 8;
             // 
             // FrmMediaTek
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(614, 483);
-            this.Controls.Add(this.gpbAction);
+            this.Controls.Add(this.dgvPersonnels);
+            this.Controls.Add(this.grbAction);
             this.Controls.Add(this.btnAbsences);
             this.Controls.Add(this.btnSuppPers);
             this.Controls.Add(this.btnModifPers);
-            this.Controls.Add(this.btnAjoutPers);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.Name = "FrmMediaTek";
             this.Text = " MediaTek";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mediatekDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mediatekDataSet)).EndInit();
-            this.gpbAction.ResumeLayout(false);
-            this.gpbAction.PerformLayout();
+            this.grbAction.ResumeLayout(false);
+            this.grbAction.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPersonnels)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -296,14 +286,12 @@ namespace MediaTek.view
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource mediatekDataSetBindingSource;
         private mediatekDataSet mediatekDataSet;
-        private System.Windows.Forms.Button btnAjoutPers;
         private System.Windows.Forms.Button btnModifPers;
         private System.Windows.Forms.Button btnSuppPers;
         private System.Windows.Forms.Button btnAbsences;
-        private System.Windows.Forms.GroupBox gpbAction;
+        private System.Windows.Forms.GroupBox grbAction;
         private System.Windows.Forms.ComboBox cboService;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtMail;
@@ -314,9 +302,10 @@ namespace MediaTek.view
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblAction;
         private System.Windows.Forms.Button btnAnnPers;
         private System.Windows.Forms.Button btnEnregPers;
+        private System.Windows.Forms.DataGridView dgvPersonnels;
     }
 }
 
