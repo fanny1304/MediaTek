@@ -226,19 +226,17 @@ namespace MediaTek.dal
         /// <param name="dateSelect">date concernée par l'absence </param>
         public void updateAbsence(Absence absence, int idpersonnelSelect, DateTime dateSelect)
         {
-            string req = "UPDATE absence SET datedebut = @datedebut, datefin = @datefin, idmotif = @idmotif";
-            req += "WHERE idpersonnel = @idpersonnelSelect AND datedebut = @dateSelect;";
-
+            string req = "update absence set datedebut = @datedebut, datefin = @datefin, idmotif = @idmotif";
+            req += " where idpersonnel = @idpersonnelSelect && datedebut = @dateSelect";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@dateSelect", dateSelect);
+            parameters.Add("@idpersonnelSelect", absence.IdPersonnel);
             parameters.Add("@datedebut", absence.dateDebut);
             parameters.Add("@datefin", absence.dateFin);
             parameters.Add("@idmotif", absence.IdMotif);
-            parameters.Add("@idpersonnelSelect", idpersonnelSelect);
-            parameters.Add("@dateSelect", dateSelect);
 
-            BddManager connex = BddManager.GetInstance(connectionString);
-            connex.ReqUpdate(req, parameters);
-
+            BddManager conn = BddManager.GetInstance(connectionString);
+            conn.ReqUpdate(req, parameters);
         }
 
         /// <summary>

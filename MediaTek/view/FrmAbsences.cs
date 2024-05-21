@@ -60,7 +60,7 @@ namespace MediaTek.view
         public void Init()
         {
             RemplirDGVAbsences(idpersonnelSelect);
-            //RemplirCBOMotifs();
+            RemplirCBOMotifs();
             EnCoursModif(false);
         }
 
@@ -99,7 +99,101 @@ namespace MediaTek.view
             dgvAbsences.Columns["idMotif"].Visible = false;
             dgvAbsences.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
+        /// <summary>
+        /// Initialisations : remplissage du combo
+        /// </summary>
+        private void RemplirCBOMotifs()
+        {
+            List<Motif> lesMotifs = controle.GetLesMotifs();
+            bdgMotifs.DataSource = lesMotifs;
+            cboMotif.DataSource = bdgMotifs;
+        }
 
+        /// <summary>
+        /// Demande de modification d'une absence
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnModifAbs_Click(object sender, EventArgs e)
+        {
+            if (dgvAbsences.SelectedRows.Count > 0)
+            {
+                EnCoursModif(true);
+                Absence absence = (Absence)bdgAbsences.List[bdgAbsences.Position];
+                dtpDebut.Value = absence.dateDebut;
+                dtpFin.Value = absence.dateFin;
+                cboMotif.SelectedIndex = cboMotif.FindStringExact(absence.Motif);
+            }
+            else
+            {
+                MessageBox.Show("Une ligne correspondant à une absence doit être sélectionnée", "Information");
+            }
+        }
+        
+        /// <summary>
+        /// Demande d'enregistrement de l'ajout ou de la modification d'une absence
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnEnregAbs_Click(object sender, EventArgs e)
+        {
+            if (!dtpDebut.Value.Equals("") && !dtpFin.Value.Equals("") && cboMotif.SelectedIndex != -1)
+            {
+                Motif motif = (Motif)bdgMotifs.List[bdgMotifs.Position];
+                Absence absAvModif = (Absence)bdgAbsences.List[bdgAbsences.Position];
+                DateTime dateDebutSelect = absAvModif.dateDebut;
+                int idPersonnelSelect = idpersonnelSelect;
 
+                if (enCoursDeModif)
+                {
+                    if (dtpFin.Value > dtpDebut.Value)
+                    {
+                        Absence absence = (Absence)bdgAbsences.List[bdgAbsences.Position];
+                        
+                        absence.dateDebut = dtpDebut.Value;
+                        absence.dateFin = dtpFin.Value;
+                        absence.IdMotif = motif.idMotif;
+                        absence.Motif = motif.Libelle;
+                        controle.updateAbsence(absence, idPersonnelSelect, dateDebutSelect);
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("La date de fin de l'absence ne peut pas avoir lieu avant la date de début de l'absence", "Alerte");
+                    }
+                }
+                else
+                {
+                    if (dtpFin.Value > dtpDebut.Value)
+                    {
+                        Absence absence = new Absence(idPersonnelSelect, motif.idMotif, dtpDebut.Value, dtpFin.Value, motif.Libelle);
+                        controle.AddAbsence(absence, idpersonnelSelect);
+                    }
+                    else
+                    {
+                        MessageBox.Show("La date de fin de l'absence ne peut pas avoir lieu avant la date de début de l'absence", "Alerte");
+                    }
+                }
+                RemplirDGVAbsences(idPersonnelSelect);
+                EnCoursModif(false);
+            }
+            else
+            {
+                MessageBox.Show("Toutes les cases doivent être remplies", "Information");
+            }
+        }
+
+        /// <summary>
+        /// Annule la demande d'ajout ou modification d'une absence
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAnnAbs_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Voulez-vous vraiment annuler ?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                EnCoursModif(false);
+            }
+        }
     }
 }

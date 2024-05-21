@@ -32,7 +32,6 @@ namespace MediaTek.view
             this.label1 = new System.Windows.Forms.Label();
             this.lblNom = new System.Windows.Forms.Label();
             this.dgvAbsences = new System.Windows.Forms.DataGridView();
-            this.btnAjoutAbs = new System.Windows.Forms.Button();
             this.btnModifAbs = new System.Windows.Forms.Button();
             this.btnSuppAbs = new System.Windows.Forms.Button();
             this.grbAction = new System.Windows.Forms.GroupBox();
@@ -81,30 +80,21 @@ namespace MediaTek.view
             this.dgvAbsences.Size = new System.Drawing.Size(463, 221);
             this.dgvAbsences.TabIndex = 4;
             // 
-            // btnAjoutAbs
-            // 
-            this.btnAjoutAbs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnAjoutAbs.Location = new System.Drawing.Point(28, 298);
-            this.btnAjoutAbs.Name = "btnAjoutAbs";
-            this.btnAjoutAbs.Size = new System.Drawing.Size(134, 25);
-            this.btnAjoutAbs.TabIndex = 5;
-            this.btnAjoutAbs.Text = "Ajouter une absence";
-            this.btnAjoutAbs.UseVisualStyleBackColor = true;
-            // 
             // btnModifAbs
             // 
             this.btnModifAbs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnModifAbs.Location = new System.Drawing.Point(168, 298);
+            this.btnModifAbs.Location = new System.Drawing.Point(110, 298);
             this.btnModifAbs.Name = "btnModifAbs";
             this.btnModifAbs.Size = new System.Drawing.Size(134, 25);
             this.btnModifAbs.TabIndex = 6;
             this.btnModifAbs.Text = "Modifier une absence";
             this.btnModifAbs.UseVisualStyleBackColor = true;
+            this.btnModifAbs.Click += new System.EventHandler(this.btnModifAbs_Click);
             // 
             // btnSuppAbs
             // 
             this.btnSuppAbs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnSuppAbs.Location = new System.Drawing.Point(308, 298);
+            this.btnSuppAbs.Location = new System.Drawing.Point(250, 298);
             this.btnSuppAbs.Name = "btnSuppAbs";
             this.btnSuppAbs.Size = new System.Drawing.Size(157, 25);
             this.btnSuppAbs.TabIndex = 7;
@@ -154,6 +144,7 @@ namespace MediaTek.view
             this.btnAnnAbs.TabIndex = 12;
             this.btnAnnAbs.Text = "Annuler";
             this.btnAnnAbs.UseVisualStyleBackColor = true;
+            this.btnAnnAbs.Click += new System.EventHandler(this.btnAnnAbs_Click);
             // 
             // btnEnregAbs
             // 
@@ -164,6 +155,7 @@ namespace MediaTek.view
             this.btnEnregAbs.TabIndex = 11;
             this.btnEnregAbs.Text = "Enregistrer";
             this.btnEnregAbs.UseVisualStyleBackColor = true;
+            this.btnEnregAbs.Click += new System.EventHandler(this.btnEnregAbs_Click);
             // 
             // dtpDebut
             // 
@@ -219,7 +211,6 @@ namespace MediaTek.view
             this.ClientSize = new System.Drawing.Size(496, 543);
             this.Controls.Add(this.btnSuppAbs);
             this.Controls.Add(this.btnModifAbs);
-            this.Controls.Add(this.btnAjoutAbs);
             this.Controls.Add(this.dgvAbsences);
             this.Controls.Add(this.lblNom);
             this.Controls.Add(this.label1);
@@ -239,7 +230,6 @@ namespace MediaTek.view
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblNom;
         private System.Windows.Forms.DataGridView dgvAbsences;
-        private System.Windows.Forms.Button btnAjoutAbs;
         private System.Windows.Forms.Button btnModifAbs;
         private System.Windows.Forms.Button btnSuppAbs;
         private System.Windows.Forms.GroupBox grbAction;

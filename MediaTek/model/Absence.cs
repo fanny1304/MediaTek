@@ -14,23 +14,23 @@ namespace MediaTek.model
         /// <summary>
         /// Getter sur l'idpersonnel
         /// </summary>
-        public int IdPersonnel { get; }
+        public int IdPersonnel { get; set; }
         /// <summary>
         /// Getter sur l'idmotif
         /// </summary>
-        public int IdMotif { get; }
+        public int IdMotif { get; set; }
         /// <summary>
         /// Getter sur la date de début 
         /// </summary>
-        public DateTime dateDebut { get; }
+        public DateTime dateDebut { get; set; }
         /// <summary>
         /// Getter sur la date de fin 
         /// </summary>
-        public DateTime dateFin { get; }
+        public DateTime dateFin { get; set; }
         /// <summary>
         /// Getter sur le motif 
         /// </summary>
-        public string Motif { get; }
+        public string Motif { get; set; }
         
         /// <summary>
         /// Constructeur de l'absence
