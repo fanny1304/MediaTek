@@ -195,5 +195,27 @@ namespace MediaTek.view
                 EnCoursModif(false);
             }
         }
+
+        /// <summary>
+        /// Demande de suppression d'une absence
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSuppAbs_Click(object sender, EventArgs e)
+        {
+            if (dgvAbsences.SelectedRows.Count > 0)
+            {
+                Absence absence = (Absence)bdgAbsences.List[bdgAbsences.Position];
+                if (MessageBox.Show("Voulez-vous vraiment supprimer l'absence allant du " + absence.dateDebut + " au " + absence.dateFin + " ?", "Confirmation de suppression", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    controle.DelAbsence(absence, idpersonnelSelect);
+                    RemplirDGVAbsences(idpersonnelSelect);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Une ligne doit être sélectionnée", "Alerte");
+            }
+        }
     }
 }

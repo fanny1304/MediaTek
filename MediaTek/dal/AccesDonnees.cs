@@ -199,23 +199,22 @@ namespace MediaTek.dal
             connex.ReqUpdate(req, parameters);
         }
 
-        
+
         /// <summary>
         /// Supprimer une absence 
         /// </summary>
         /// <param name="absence">Objet absence à supprimer</param>
         /// <param name="idpersonnelSelec">Id du personnel concerné par l'absence</param>
-        public void DelAbsence(Absence absence, int idpersonnelSelec)
+        public void DelAbsence(Absence absence, int idpersonnel)
         {
-            string req = "DELETE FROM absence ";
-            req += "WHERE datedebut = @datedebut";
-            req += "AND idpersonnel = @idpersonnelSelec;";
+            string req = "DELETE FROM absence WHERE idpersonnel = " + idpersonnel;
+            req += " AND datedebut = @datedebut;";
+
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("@datedebut", absence.dateDebut);
-            parameters.Add("@idpersonnelSelec", idpersonnelSelec);
-
-            BddManager connex = BddManager.GetInstance(connectionString);
-            connex.ReqUpdate(req, parameters);
+            parameters.Add("@datefin", absence.dateFin);
+            BddManager conn = BddManager.GetInstance(connectionString);
+            conn.ReqUpdate(req, parameters);
         }
 
         /// <summary>

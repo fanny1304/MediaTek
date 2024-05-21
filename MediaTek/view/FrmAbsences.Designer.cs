@@ -100,6 +100,7 @@ namespace MediaTek.view
             this.btnSuppAbs.TabIndex = 7;
             this.btnSuppAbs.Text = "Supprimer une absence";
             this.btnSuppAbs.UseVisualStyleBackColor = true;
+            this.btnSuppAbs.Click += new System.EventHandler(this.btnSuppAbs_Click);
             // 
             // grbAction
             // 
