@@ -6,8 +6,14 @@ using System.Windows.Forms;
 using MediaTek.controleur;
 using MediaTek.view;
 
+/// <summary>
+/// Application MediaTek
+/// </summary>
 namespace MediaTek
 {
+    /// <summary>
+    /// Programme MediaTek
+    /// </summary>
     static class Program
     {
         /// <summary>
