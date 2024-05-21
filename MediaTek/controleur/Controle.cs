@@ -155,6 +155,7 @@ namespace MediaTek.controleur
         /// <summary>
         /// La fenêtre de gestion des absences apparaît
         /// </summary>
+        /// <param name="idPersonnel">id du personnel concerné par les absences</param>
         /// <param name="nom">Nom du personnel concerné par les absences</param>
         /// <param name="prenom">Prenom du personnel </param>
         /// <returns>Affichage de la fenêtre de getsion des absences </returns>

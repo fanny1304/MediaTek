@@ -155,7 +155,7 @@ namespace MediaTek.dal
         /// <summary>
         /// Récupère et retourne les absences pour un personnel
         /// </summary>
-        /// <param name="idpersonnelSelect">id du personnel dont on récupère les absences</param>
+        /// <param name="idpersonnel">id du personnel dont on récupère les absences</param>
         /// <returns>Liste des absences</returns>
         public static List<Absence> getLesAbsences(int idpersonnel)
         {
@@ -204,7 +204,7 @@ namespace MediaTek.dal
         /// Supprimer une absence 
         /// </summary>
         /// <param name="absence">Objet absence à supprimer</param>
-        /// <param name="idpersonnelSelec">Id du personnel concerné par l'absence</param>
+        /// <param name="idpersonnel">Id du personnel concerné par l'absence</param>
         public void DelAbsence(Absence absence, int idpersonnel)
         {
             string req = "DELETE FROM absence WHERE idpersonnel = " + idpersonnel;

@@ -30,7 +30,7 @@ namespace MediaTek.view
         /// <summary>
         /// Initialisation de la variable idpersonnel 
         /// </summary>
-        public int idpersonnelSelect;
+        private int idpersonnelSelect;
         /// <summary>
         /// Objet pour gérer la liste des personnels 
         /// </summary>
@@ -44,6 +44,9 @@ namespace MediaTek.view
         /// Initialisation des composants graphiques
         /// </summary>
         /// <param name="controle"></param>
+        /// <param name="idPersonnel">id du personnel concerné par les absences</param>
+        /// <param name="nom">nom du personnel concerné par les absences</param>
+        /// <param name="prenom">prenom du personnel concerné par les absences</param>
         public FrmAbsences(Controle controle, int idPersonnel, string nom, string prenom)
         {
             InitializeComponent();
