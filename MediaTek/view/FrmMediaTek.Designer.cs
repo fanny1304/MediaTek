@@ -110,6 +110,7 @@ namespace MediaTek.view
             this.btnAbsences.TabIndex = 6;
             this.btnAbsences.Text = "Gérer les absences";
             this.btnAbsences.UseVisualStyleBackColor = true;
+            this.btnAbsences.Click += new System.EventHandler(this.btnAbsences_Click);
             // 
             // grbAction
             // 

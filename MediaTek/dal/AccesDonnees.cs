@@ -157,29 +157,23 @@ namespace MediaTek.dal
         /// </summary>
         /// <param name="idpersonnelSelect">id du personnel dont on récupère les absences</param>
         /// <returns>Liste des absences</returns>
-        public static List<Absence> getLesAbsences(int idpersonnelSelect)
+        public static List<Absence> getLesAbsences(int idpersonnel)
         {
             List<Absence> lesAbsences = new List<Absence>();
 
-            string req = "SELECT p.idpersonnel AS personnel, a.datedebut AS datedebut, a.datefin AS datefin, m.idmotif AS idmotif, m.motif AS motif ";
-            req += "FROM personnel AS p JOIN absence a ON (p.idpersonnel = a.idpersonnel) JOIN motif m on (a.idmotif = m.idmotif)";
-            req += "WHERE p.idpersonnel = @idpersonnelSelect";
-            req += "ORDER BY datedebut DESC;";
-            Dictionary<string, object> parameters = new Dictionary<string, object>();
-            parameters.Add("@idpersonnelSelect", idpersonnelSelect);
-
+            //Récupère et retourne les absences du personnel sélectionné   
+            string req = "SELECT a.datedebut AS 'datedebut', a.datefin AS 'datefin', a.idpersonnel AS 'idpersonnel', a.idmotif AS 'idmotif', m.libelle AS 'motif' FROM absence a JOIN motif m USING (idmotif)";
+            req += "WHERE idpersonnel=" + idpersonnel + " ORDER BY dateDebut DESC";
             BddManager curseur = BddManager.GetInstance(connectionString);
-            curseur.ReqSelect(req, parameters);
-            
+            curseur.ReqSelect(req, null);
             while (curseur.Read())
             {
                 Absence absence = new Absence(
-                    (int)curseur.Field("idpersonnel"), 
-                    (int)curseur.Field("idmotif"),
-                    (DateTime)curseur.Field("datedebut"),
-                    (DateTime)curseur.Field("datefin"), 
-                    (string)curseur.Field("motif")
-                    );
+                    (int)curseur.Field("idpersonnel"),
+                    (int)curseur.Field("IDMOTIF"),
+                    (DateTime)curseur.Field("DATEDEBUT"),
+                    (DateTime)curseur.Field("DATEFIN"),
+                    (string)curseur.Field("MOTIF"));
                 lesAbsences.Add(absence);
             }
             curseur.Close();
@@ -277,19 +271,20 @@ namespace MediaTek.dal
         /// <param name="nom">Nom du personnel selectionné</param>
         /// <param name="prenom">Prénom du personnel selectionné</param>
         /// <returns>Id du personnel sélectionné</returns>
-        public int recupererIdPersonnel(string nom, string prenom)
+        public static int recupererIdPersonnel(string nom, string prenom)
         {
+            // On déclare l'ID à 0 par défaut
             int idpersonnel = 0;
-            string req = "SELECT idpersonnel FROM personnel";
-            req += "WHERE nom = '" + nom + "' AND prenom = '" + prenom + "';";
+            // On sélectionne l'ID de la personne 
+            string req = "SELECT idpersonnel FROM personnel WHERE nom='" + nom + "' AND prenom = '" + prenom + "'";
 
             BddManager curseur = BddManager.GetInstance(connectionString);
             curseur.ReqSelect(req, null);
 
+            // On loop sur la valeur retournée
             while (curseur.Read())
-            {
-                idpersonnel = (int)curseur.Field("idpersonnel");
-            }
+                idpersonnel = (int)curseur.Field("IDPERSONNEL");
+            // On renvoie l'id du personnel (0 par défaut, différent si ligne trouvée)
             return idpersonnel;
         }
 

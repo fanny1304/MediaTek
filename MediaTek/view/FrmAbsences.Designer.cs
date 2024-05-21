@@ -30,23 +30,23 @@ namespace MediaTek.view
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lblNom = new System.Windows.Forms.Label();
+            this.dgvAbsences = new System.Windows.Forms.DataGridView();
             this.btnAjoutAbs = new System.Windows.Forms.Button();
             this.btnModifAbs = new System.Windows.Forms.Button();
             this.btnSuppAbs = new System.Windows.Forms.Button();
-            this.gpbAction = new System.Windows.Forms.GroupBox();
-            this.btnAnnPers = new System.Windows.Forms.Button();
-            this.btnEnregPers = new System.Windows.Forms.Button();
+            this.grbAction = new System.Windows.Forms.GroupBox();
+            this.cboMotif = new System.Windows.Forms.ComboBox();
+            this.dtpFin = new System.Windows.Forms.DateTimePicker();
+            this.btnAnnAbs = new System.Windows.Forms.Button();
+            this.btnEnregAbs = new System.Windows.Forms.Button();
+            this.dtpDebut = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.cboService = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.gpbAction.SuspendLayout();
+            this.lblAction = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAbsences)).BeginInit();
+            this.grbAction.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -61,25 +61,25 @@ namespace MediaTek.view
             this.label1.TabIndex = 2;
             this.label1.Text = "Gestion des absences de :";
             // 
-            // label2
+            // lblNom
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.SystemColors.Control;
-            this.label2.Font = new System.Drawing.Font("Microsoft PhagsPa", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(180, 34);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 24);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "prenom nom";
+            this.lblNom.AutoSize = true;
+            this.lblNom.BackColor = System.Drawing.SystemColors.Control;
+            this.lblNom.Font = new System.Drawing.Font("Microsoft PhagsPa", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNom.ForeColor = System.Drawing.Color.Black;
+            this.lblNom.Location = new System.Drawing.Point(180, 34);
+            this.lblNom.Name = "lblNom";
+            this.lblNom.Size = new System.Drawing.Size(119, 24);
+            this.lblNom.TabIndex = 3;
+            this.lblNom.Text = "prenom nom";
             // 
-            // dataGridView1
+            // dgvAbsences
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 71);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(463, 221);
-            this.dataGridView1.TabIndex = 4;
+            this.dgvAbsences.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAbsences.Location = new System.Drawing.Point(16, 71);
+            this.dgvAbsences.Name = "dgvAbsences";
+            this.dgvAbsences.Size = new System.Drawing.Size(463, 221);
+            this.dgvAbsences.TabIndex = 4;
             // 
             // btnAjoutAbs
             // 
@@ -111,44 +111,66 @@ namespace MediaTek.view
             this.btnSuppAbs.Text = "Supprimer une absence";
             this.btnSuppAbs.UseVisualStyleBackColor = true;
             // 
-            // gpbAction
+            // grbAction
             // 
-            this.gpbAction.Controls.Add(this.cboService);
-            this.gpbAction.Controls.Add(this.dateTimePicker2);
-            this.gpbAction.Controls.Add(this.btnAnnPers);
-            this.gpbAction.Controls.Add(this.btnEnregPers);
-            this.gpbAction.Controls.Add(this.dateTimePicker1);
-            this.gpbAction.Controls.Add(this.label7);
-            this.gpbAction.Controls.Add(this.label4);
-            this.gpbAction.Controls.Add(this.label3);
-            this.gpbAction.Controls.Add(this.label8);
-            this.gpbAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gpbAction.Location = new System.Drawing.Point(16, 343);
-            this.gpbAction.Name = "gpbAction";
-            this.gpbAction.Size = new System.Drawing.Size(463, 171);
-            this.gpbAction.TabIndex = 8;
-            this.gpbAction.TabStop = false;
-            this.gpbAction.Text = "Actions";
+            this.grbAction.Controls.Add(this.cboMotif);
+            this.grbAction.Controls.Add(this.dtpFin);
+            this.grbAction.Controls.Add(this.btnAnnAbs);
+            this.grbAction.Controls.Add(this.btnEnregAbs);
+            this.grbAction.Controls.Add(this.dtpDebut);
+            this.grbAction.Controls.Add(this.label7);
+            this.grbAction.Controls.Add(this.label4);
+            this.grbAction.Controls.Add(this.label3);
+            this.grbAction.Controls.Add(this.lblAction);
+            this.grbAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grbAction.Location = new System.Drawing.Point(16, 343);
+            this.grbAction.Name = "grbAction";
+            this.grbAction.Size = new System.Drawing.Size(463, 171);
+            this.grbAction.TabIndex = 8;
+            this.grbAction.TabStop = false;
+            this.grbAction.Text = "Actions";
             // 
-            // btnAnnPers
+            // cboMotif
             // 
-            this.btnAnnPers.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnnPers.Location = new System.Drawing.Point(234, 130);
-            this.btnAnnPers.Name = "btnAnnPers";
-            this.btnAnnPers.Size = new System.Drawing.Size(75, 23);
-            this.btnAnnPers.TabIndex = 12;
-            this.btnAnnPers.Text = "Annuler";
-            this.btnAnnPers.UseVisualStyleBackColor = true;
+            this.cboMotif.FormattingEnabled = true;
+            this.cboMotif.Location = new System.Drawing.Point(152, 93);
+            this.cboMotif.Name = "cboMotif";
+            this.cboMotif.Size = new System.Drawing.Size(200, 21);
+            this.cboMotif.TabIndex = 15;
             // 
-            // btnEnregPers
+            // dtpFin
             // 
-            this.btnEnregPers.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEnregPers.Location = new System.Drawing.Point(143, 130);
-            this.btnEnregPers.Name = "btnEnregPers";
-            this.btnEnregPers.Size = new System.Drawing.Size(75, 23);
-            this.btnEnregPers.TabIndex = 11;
-            this.btnEnregPers.Text = "Enregistrer";
-            this.btnEnregPers.UseVisualStyleBackColor = true;
+            this.dtpFin.Location = new System.Drawing.Point(152, 67);
+            this.dtpFin.Name = "dtpFin";
+            this.dtpFin.Size = new System.Drawing.Size(200, 20);
+            this.dtpFin.TabIndex = 14;
+            // 
+            // btnAnnAbs
+            // 
+            this.btnAnnAbs.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnnAbs.Location = new System.Drawing.Point(234, 130);
+            this.btnAnnAbs.Name = "btnAnnAbs";
+            this.btnAnnAbs.Size = new System.Drawing.Size(75, 23);
+            this.btnAnnAbs.TabIndex = 12;
+            this.btnAnnAbs.Text = "Annuler";
+            this.btnAnnAbs.UseVisualStyleBackColor = true;
+            // 
+            // btnEnregAbs
+            // 
+            this.btnEnregAbs.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEnregAbs.Location = new System.Drawing.Point(143, 130);
+            this.btnEnregAbs.Name = "btnEnregAbs";
+            this.btnEnregAbs.Size = new System.Drawing.Size(75, 23);
+            this.btnEnregAbs.TabIndex = 11;
+            this.btnEnregAbs.Text = "Enregistrer";
+            this.btnEnregAbs.UseVisualStyleBackColor = true;
+            // 
+            // dtpDebut
+            // 
+            this.dtpDebut.Location = new System.Drawing.Point(152, 43);
+            this.dtpDebut.Name = "dtpDebut";
+            this.dtpDebut.Size = new System.Drawing.Size(200, 20);
+            this.dtpDebut.TabIndex = 13;
             // 
             // label7
             // 
@@ -180,37 +202,15 @@ namespace MediaTek.view
             this.label3.TabIndex = 1;
             this.label3.Text = "Date de début :";
             // 
-            // label8
+            // lblAction
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Calibri", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(7, 20);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(127, 15);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Ajouter une absence :";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(152, 43);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 13;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(152, 67);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 14;
-            // 
-            // cboService
-            // 
-            this.cboService.FormattingEnabled = true;
-            this.cboService.Location = new System.Drawing.Point(152, 93);
-            this.cboService.Name = "cboService";
-            this.cboService.Size = new System.Drawing.Size(200, 21);
-            this.cboService.TabIndex = 15;
+            this.lblAction.AutoSize = true;
+            this.lblAction.Font = new System.Drawing.Font("Calibri", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAction.Location = new System.Drawing.Point(7, 20);
+            this.lblAction.Name = "lblAction";
+            this.lblAction.Size = new System.Drawing.Size(127, 15);
+            this.lblAction.TabIndex = 0;
+            this.lblAction.Text = "Ajouter une absence :";
             // 
             // FrmAbsences
             // 
@@ -220,15 +220,15 @@ namespace MediaTek.view
             this.Controls.Add(this.btnSuppAbs);
             this.Controls.Add(this.btnModifAbs);
             this.Controls.Add(this.btnAjoutAbs);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.dgvAbsences);
+            this.Controls.Add(this.lblNom);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.gpbAction);
+            this.Controls.Add(this.grbAction);
             this.Name = "FrmAbsences";
             this.Text = "FrmAbsences";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.gpbAction.ResumeLayout(false);
-            this.gpbAction.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAbsences)).EndInit();
+            this.grbAction.ResumeLayout(false);
+            this.grbAction.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,20 +237,20 @@ namespace MediaTek.view
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label lblNom;
+        private System.Windows.Forms.DataGridView dgvAbsences;
         private System.Windows.Forms.Button btnAjoutAbs;
         private System.Windows.Forms.Button btnModifAbs;
         private System.Windows.Forms.Button btnSuppAbs;
-        private System.Windows.Forms.GroupBox gpbAction;
-        private System.Windows.Forms.Button btnAnnPers;
-        private System.Windows.Forms.Button btnEnregPers;
+        private System.Windows.Forms.GroupBox grbAction;
+        private System.Windows.Forms.Button btnAnnAbs;
+        private System.Windows.Forms.Button btnEnregAbs;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ComboBox cboService;
+        private System.Windows.Forms.Label lblAction;
+        private System.Windows.Forms.DateTimePicker dtpFin;
+        private System.Windows.Forms.DateTimePicker dtpDebut;
+        private System.Windows.Forms.ComboBox cboMotif;
     }
 }

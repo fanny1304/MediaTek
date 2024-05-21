@@ -31,19 +31,13 @@ namespace MediaTek.view
             this.controle = controle;
         }
 
-        /// <summary>
-        /// Procédure évenementielle du bouton de connexion 
-        /// il faut d'abord vérifier que les identifiants sont corrects 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnConnexion_Click(object sender, EventArgs e)
+        private void btnConnexion_Click_1(object sender, EventArgs e)
         {
             if (!txtLogin.Text.Equals("") && !txtPwd.Text.Equals(""))
             {
                 if (!controle.Authentification(txtLogin.Text, txtPwd.Text))
                 {
-                    MessageBox.Show("Authentification incorrecte.", "Alerte");
+                    MessageBox.Show("Authentification incorrecte", "Alerte");
                     txtLogin.Text = "";
                     txtPwd.Text = "";
                     txtLogin.Focus();
@@ -51,9 +45,8 @@ namespace MediaTek.view
             }
             else
             {
-                MessageBox.Show("Tous les champs doivent être remplis.", "Alerte");
+                MessageBox.Show("Tous les champs doivent être remplis", "Information");
             }
-
         }
     }
 }

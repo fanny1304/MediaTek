@@ -18,7 +18,7 @@ namespace MediaTek.controleur
         /// <summary>
         /// Fenêtre d'authentification
         /// </summary>
-        private FrmAuthentification frmAuthentification;
+        private readonly FrmAuthentification frmAuthentification;
         /// <summary>
         /// Objet faisant le lien avec AccesDonnees
         /// </summary>
@@ -158,12 +158,11 @@ namespace MediaTek.controleur
         /// <param name="nom">Nom du personnel concerné par les absences</param>
         /// <param name="prenom">Prenom du personnel </param>
         /// <returns>Affichage de la fenêtre de getsion des absences </returns>
-        public Boolean Absences(string nom, string prenom)
+        public Boolean Absences(int idPersonnel, string nom, string prenom)
         {
-            //FrmAbsences abc = new FrmAbsences(this, nom, prenom);
-           // abc.ShowDialog();
+            FrmAbsences var = new FrmAbsences(this, idPersonnel, nom, prenom);
+            var.ShowDialog();
             return true;
-
         }
 
 

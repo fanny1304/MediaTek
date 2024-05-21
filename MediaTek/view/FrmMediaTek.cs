@@ -86,7 +86,7 @@ namespace MediaTek.view
         /// <summary>
         /// Modification de l'affichage suivant si on est en cours de modification ou non
         /// </summary>
-        /// <param name="modif"></param>
+        /// <param name="modif">booléen</param>
         private void EnCoursModif(Boolean modif)
         {
             enCoursDeModif = modif;
@@ -193,6 +193,21 @@ namespace MediaTek.view
                     controle.DelPersonnel(personnel);
                     RemplirDGVPersonnels();
                 }
+            }
+            else
+            {
+                MessageBox.Show("Une ligne doit être sélectionnée.", "Information");
+            }
+        }
+
+        private void btnAbsences_Click(object sender, EventArgs e)
+        {
+            if (dgvPersonnels.SelectedRows.Count > 0)
+            {
+                int idpersonnelSelect = (int)dgvPersonnels.CurrentRow.Cells["idpersonnel"].Value;
+                string nom = (string)dgvPersonnels.CurrentRow.Cells["nom"].Value;
+                string prenom = (string)dgvPersonnels.CurrentRow.Cells["prenom"].Value;
+                controle.Absences(idpersonnelSelect, nom, prenom);
             }
             else
             {
