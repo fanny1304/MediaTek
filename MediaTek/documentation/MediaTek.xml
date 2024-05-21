@@ -1,0 +1,828 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MediaTek</name>
+    </assembly>
+    <members>
+        <member name="T:MediaTek.bddmanager.BddManager">
+            <summary>
+            Connexion à la base de données et exécution des requêtes
+            </summary>
+        </member>
+        <member name="F:MediaTek.bddmanager.BddManager.instance">
+            <summary>
+            Unique instance de la classe
+            </summary>
+        </member>
+        <member name="F:MediaTek.bddmanager.BddManager.connection">
+            <summary>
+            objet de connexion à la BDD à partir d'une chaîne de connexion
+            </summary>
+        </member>
+        <member name="F:MediaTek.bddmanager.BddManager.command">
+            <summary>
+            objet pour exécuter une requête SQL
+            </summary>
+        </member>
+        <member name="F:MediaTek.bddmanager.BddManager.reader">
+            <summary>
+            objet contenant le résultat d'une requête "select" (curseur)
+            </summary>
+        </member>
+        <member name="M:MediaTek.bddmanager.BddManager.#ctor(System.String)">
+            <summary>
+            Constructeur privé pour créer la connexion à la BDD et l'ouvrir
+            </summary>
+            <param name="stringConnect">chaine de connexion</param>
+        </member>
+        <member name="M:MediaTek.bddmanager.BddManager.GetInstance(System.String)">
+            <summary>
+            Crée une instance unique de la classe
+            </summary>
+            <param name="stringConnect">chaine de connexion</param>
+            <returns>instance unique de la classe</returns>
+        </member>
+        <member name="M:MediaTek.bddmanager.BddManager.ReqUpdate(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Exécution d'une requête autre que "select"
+            </summary>
+            <param name="stringQuery">requête autre que select</param>
+            <param name="parameters">dictionnire contenant les parametres</param>
+        </member>
+        <member name="M:MediaTek.bddmanager.BddManager.ReqSelect(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Exécution d'une requête type "SELECT" et valorisation du curseur
+            </summary>
+            <param name="stringQuery">requête "SELECT"</param>
+            <param name="parameters"></param>
+        </member>
+        <member name="M:MediaTek.bddmanager.BddManager.Read">
+            <summary>
+            Tente de lire la ligne suivante du curseur
+            </summary>
+            <returns>false si fin de curseur atteinte</returns>
+        </member>
+        <member name="M:MediaTek.bddmanager.BddManager.Field(System.String)">
+            <summary>
+            Retourne le contenu d'un champ dont le nom est passé en paramètre
+            </summary>
+            <param name="nameField">nom du champ</param>
+            <returns>valeur du champ</returns>
+        </member>
+        <member name="M:MediaTek.bddmanager.BddManager.Close">
+            <summary>
+            Fermeture du curseur
+            </summary>
+        </member>
+        <member name="T:MediaTek.controleur.Controle">
+            <summary>
+            gère les interactions entre la vue et le modèle
+            </summary>
+        </member>
+        <member name="F:MediaTek.controleur.Controle.frmAuthentification">
+            <summary>
+            Fenêtre d'authentification
+            </summary>
+        </member>
+        <member name="F:MediaTek.controleur.Controle.accesDonnees">
+            <summary>
+            Objet faisant le lien avec AccesDonnees
+            </summary>
+        </member>
+        <member name="M:MediaTek.controleur.Controle.#ctor">
+            <summary>
+            Ouverture de la fenêtre
+            </summary>
+        </member>
+        <member name="M:MediaTek.controleur.Controle.Authentification(System.String,System.String)">
+            <summary>
+            Demande la vérification de l'authentification
+            </summary>
+            <param name="login"></param>
+            <param name="pwd"></param>
+            <returns>Vérification de l'authentification</returns>
+        </member>
+        <member name="M:MediaTek.controleur.Controle.GetLesPersonnels">
+            <summary>
+            Récupère et retourne les infos des personnels 
+            </summary>
+            <returns>Liste des personnels</returns>
+        </member>
+        <member name="M:MediaTek.controleur.Controle.GetLesServices">
+            <summary>
+            Récupère et retourne les infos des services
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MediaTek.controleur.Controle.AddPersonnel(MediaTek.model.Personnel)">
+            <summary>
+            Demande d'ajout d'un personnel
+            </summary>
+            <param name="personnel">Objet personnel à ajouter</param>
+        </member>
+        <member name="M:MediaTek.controleur.Controle.DelPersonnel(MediaTek.model.Personnel)">
+            <summary>
+            Demande de suppression d'un personnel
+            </summary>
+            <param name="personnel">Objet personnel à supprimer</param>
+        </member>
+        <member name="M:MediaTek.controleur.Controle.UpdatePersonnel(MediaTek.model.Personnel)">
+            <summary>
+            Demande de modification d'un personnel
+            </summary>
+            <param name="personnel">Objet personnel à modifier </param>
+        </member>
+        <member name="M:MediaTek.controleur.Controle.getLesAbsences(System.Int32)">
+            <summary>
+            Récupère et retourne les absences d'un personnel
+            </summary>
+            <param name="idpersonnelSelec">id du personnel concerné</param>
+            <returns>liste des absences </returns>
+        </member>
+        <member name="M:MediaTek.controleur.Controle.AddAbsence(MediaTek.model.Absence,System.Int32)">
+            <summary>
+            Demande d'ajout d'une absence pour un personnel sélectionné
+            </summary>
+            <param name="absence">Objet absence à ajouter</param>
+            <param name="idpersonnelSelec">id du personnel concerné</param>
+        </member>
+        <member name="M:MediaTek.controleur.Controle.DelAbsence(MediaTek.model.Absence,System.Int32)">
+            <summary>
+            Demande de suppression d'une absence pour un personnel sélectionné
+            </summary>
+            <param name="absence">Objet absence à supprimer </param>
+            <param name="idpersonnelSelec">id du personnel concerné</param>
+        </member>
+        <member name="M:MediaTek.controleur.Controle.updateAbsence(MediaTek.model.Absence,System.Int32,System.DateTime)">
+            <summary>
+            Demande de modification d'une absence pour un personnel sélectionné
+            </summary>
+            <param name="absence">Objet absence à modifier </param>
+            <param name="idpersonnelSelect">id du personnel concerné</param>
+            <param name="dateSelect">date de début de l'absence</param>
+        </member>
+        <member name="M:MediaTek.controleur.Controle.GetLesMotifs">
+            <summary>
+            Recupère et retourne la liste des motifs
+            </summary>
+            <returns>liste des motifs</returns>
+        </member>
+        <member name="M:MediaTek.controleur.Controle.Absences(System.Int32,System.String,System.String)">
+            <summary>
+            La fenêtre de gestion des absences apparaît
+            </summary>
+            <param name="idPersonnel">id du personnel concerné par les absences</param>
+            <param name="nom">Nom du personnel concerné par les absences</param>
+            <param name="prenom">Prenom du personnel </param>
+            <returns>Affichage de la fenêtre de getsion des absences </returns>
+        </member>
+        <member name="T:MediaTek.dal.AccesDonnees">
+            <summary>
+            Classe permettant l'accès aux données
+            </summary>
+        </member>
+        <member name="F:MediaTek.dal.AccesDonnees.connectionString">
+            <summary>
+            Chaîne de connexion à la bdd
+            </summary>
+        </member>
+        <member name="M:MediaTek.dal.AccesDonnees.Authentification(System.String,System.String)">
+            <summary>
+            Vérifie si l'utilisateur a le droit de se connecter
+            </summary>
+            <param name="login">Login inséré lors de la tentative de connexion</param>
+            <param name="pwd">Mot de passe inséré lors de la tentative de connexion</param>
+            <returns>Vrai si les identifiants correspondent </returns>
+        </member>
+        <member name="M:MediaTek.dal.AccesDonnees.GetLesPersonnels">
+            <summary>
+            Récupère et retourne les personnels provenant de la BDD
+            </summary>
+            <returns>Liste des personnels</returns>
+        </member>
+        <member name="M:MediaTek.dal.AccesDonnees.GetLesServices">
+            <summary>
+            Récupère et retourne les services provenant de la BDD
+            </summary>
+            <returns>Liste des services</returns>       
+        </member>
+        <member name="M:MediaTek.dal.AccesDonnees.AddPersonnel(MediaTek.model.Personnel)">
+            <summary>
+            Ajouter un personnel
+            </summary>
+            <param name="personnel">Objet personnel à ajouter</param>
+        </member>
+        <member name="M:MediaTek.dal.AccesDonnees.DelPersonnel(MediaTek.model.Personnel)">
+            <summary>
+            Suppression d'un personnel
+            </summary>
+            <param name="personnel">Objet personnel à supprimer</param>
+        </member>
+        <member name="M:MediaTek.dal.AccesDonnees.UpdatePersonnel(MediaTek.model.Personnel)">
+            <summary>
+            Modification d'un personnel 
+            </summary>
+            <param name="personnel">objet personnel à modifier</param>
+        </member>
+        <member name="M:MediaTek.dal.AccesDonnees.getLesAbsences(System.Int32)">
+            <summary>
+            Récupère et retourne les absences pour un personnel
+            </summary>
+            <param name="idpersonnel">id du personnel dont on récupère les absences</param>
+            <returns>Liste des absences</returns>
+        </member>
+        <member name="M:MediaTek.dal.AccesDonnees.AddAbsence(MediaTek.model.Absence,System.Int32)">
+            <summary>
+            Ajouter une absence 
+            </summary>
+            <param name="absence">Objet absence à ajouter</param>
+            <param name="idpersonnelSelec">Id du personnel concerné par l'absence </param>
+        </member>
+        <member name="M:MediaTek.dal.AccesDonnees.DelAbsence(MediaTek.model.Absence,System.Int32)">
+            <summary>
+            Supprimer une absence 
+            </summary>
+            <param name="absence">Objet absence à supprimer</param>
+            <param name="idpersonnel">Id du personnel concerné par l'absence</param>
+        </member>
+        <member name="M:MediaTek.dal.AccesDonnees.updateAbsence(MediaTek.model.Absence,System.Int32,System.DateTime)">
+            <summary>
+            Modification d'une absence 
+            </summary>
+            <param name="absence">Objet absence à modifier</param>
+            <param name="idpersonnelSelect">id du personnel concerné par l'absence</param>
+            <param name="dateSelect">date concernée par l'absence </param>
+        </member>
+        <member name="M:MediaTek.dal.AccesDonnees.GetLesMotifs">
+            <summary>
+            Récupère et retourne les motifs de la bdd
+            </summary>
+            <returns>liste des motifs</returns>
+        </member>
+        <member name="M:MediaTek.dal.AccesDonnees.recupererIdPersonnel(System.String,System.String)">
+            <summary>
+            Récupération de l'id du personnel sélectionné
+            </summary>
+            <param name="nom">Nom du personnel selectionné</param>
+            <param name="prenom">Prénom du personnel selectionné</param>
+            <returns>Id du personnel sélectionné</returns>
+        </member>
+        <member name="T:MediaTek.mediatekDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:MediaTek.mediatekDataSet.absenceDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MediaTek.mediatekDataSet.motifDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MediaTek.mediatekDataSet.personnelDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MediaTek.mediatekDataSet.responsableDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MediaTek.mediatekDataSet.serviceDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:MediaTek.mediatekDataSet.absenceRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MediaTek.mediatekDataSet.motifRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MediaTek.mediatekDataSet.personnelRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MediaTek.mediatekDataSet.responsableRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MediaTek.mediatekDataSet.serviceRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:MediaTek.mediatekDataSet.absenceRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MediaTek.mediatekDataSet.motifRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MediaTek.mediatekDataSet.personnelRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MediaTek.mediatekDataSet.responsableRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MediaTek.mediatekDataSet.serviceRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:MediaTek.mediatekDataSetTableAdapters.absenceTableAdapter">
+             <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:MediaTek.mediatekDataSetTableAdapters.motifTableAdapter">
+             <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:MediaTek.mediatekDataSetTableAdapters.personnelTableAdapter">
+             <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:MediaTek.mediatekDataSetTableAdapters.responsableTableAdapter">
+             <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:MediaTek.mediatekDataSetTableAdapters.serviceTableAdapter">
+             <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:MediaTek.mediatekDataSetTableAdapters.TableAdapterManager">
+             <summary>
+            TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+            </summary>
+        </member>
+        <member name="M:MediaTek.mediatekDataSetTableAdapters.TableAdapterManager.UpdateUpdatedRows(MediaTek.mediatekDataSet,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+             <summary>
+            Update rows in top-down order.
+            </summary>
+        </member>
+        <member name="M:MediaTek.mediatekDataSetTableAdapters.TableAdapterManager.UpdateInsertedRows(MediaTek.mediatekDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+             <summary>
+            Insert rows in top-down order.
+            </summary>
+        </member>
+        <member name="M:MediaTek.mediatekDataSetTableAdapters.TableAdapterManager.UpdateDeletedRows(MediaTek.mediatekDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+             <summary>
+            Delete rows in bottom-up order.
+            </summary>
+        </member>
+        <member name="M:MediaTek.mediatekDataSetTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+             <summary>
+            Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+            </summary>
+        </member>
+        <member name="M:MediaTek.mediatekDataSetTableAdapters.TableAdapterManager.UpdateAll(MediaTek.mediatekDataSet)">
+             <summary>
+            Update all changes to the dataset.
+            </summary>
+        </member>
+        <member name="T:MediaTek.mediatekDataSetTableAdapters.TableAdapterManager.UpdateOrderOption">
+             <summary>
+            Update Order Option
+            </summary>
+        </member>
+        <member name="T:MediaTek.mediatekDataSetTableAdapters.TableAdapterManager.SelfReferenceComparer">
+             <summary>
+            Used to sort self-referenced table's rows
+            </summary>
+        </member>
+        <member name="T:MediaTek.model.Absence">
+            <summary>
+            Classe qui permet de gérer les absences
+            </summary>
+        </member>
+        <member name="P:MediaTek.model.Absence.IdPersonnel">
+            <summary>
+            Getter sur l'idpersonnel
+            </summary>
+        </member>
+        <member name="P:MediaTek.model.Absence.IdMotif">
+            <summary>
+            Getter sur l'idmotif
+            </summary>
+        </member>
+        <member name="P:MediaTek.model.Absence.dateDebut">
+            <summary>
+            Getter sur la date de début 
+            </summary>
+        </member>
+        <member name="P:MediaTek.model.Absence.dateFin">
+            <summary>
+            Getter sur la date de fin 
+            </summary>
+        </member>
+        <member name="P:MediaTek.model.Absence.Motif">
+            <summary>
+            Getter sur le motif 
+            </summary>
+        </member>
+        <member name="M:MediaTek.model.Absence.#ctor(System.Int32,System.Int32,System.DateTime,System.DateTime,System.String)">
+            <summary>
+            Constructeur de l'absence
+            </summary>
+            <param name="idpersonnel">Id du personnel</param>
+            <param name="idmotif">Id du motif de l'absence</param>
+            <param name="datedebut">Date de début de l'absence</param>
+            <param name="datefin">Date de fin de l'absence</param>
+            <param name="motif">Motif de l'absence</param>
+        </member>
+        <member name="T:MediaTek.model.Motif">
+            <summary>
+            Classe qui permet de gérer les motifs 
+            </summary>
+        </member>
+        <member name="P:MediaTek.model.Motif.idMotif">
+            <summary>
+            Getter sur l'id du motif
+            </summary>
+        </member>
+        <member name="P:MediaTek.model.Motif.Libelle">
+            <summary>
+            Getter sur l'id du libellé
+            </summary>
+        </member>
+        <member name="M:MediaTek.model.Motif.#ctor(System.Int32,System.String)">
+            <summary>
+            Constructeur du Motif
+            </summary>
+            <param name="idmotif">id du motif</param>
+            <param name="libelle">libellé du motif</param>
+        </member>
+        <member name="M:MediaTek.model.Motif.ToString">
+            <summary>
+            Définit l'information à afficher
+            </summary>
+            <returns>libellé du motif</returns>
+        </member>
+        <member name="T:MediaTek.model.Personnel">
+            <summary>
+            Classe qui permet de gérer les personnels
+            </summary>
+        </member>
+        <member name="P:MediaTek.model.Personnel.idPersonnel">
+            <summary>
+            Getter sur l'id du personnel
+            </summary>
+        </member>
+        <member name="P:MediaTek.model.Personnel.Nom">
+            <summary>
+            Getter sur le nom du personnel
+            </summary>
+        </member>
+        <member name="P:MediaTek.model.Personnel.Prenom">
+            <summary>
+            Getter sur le prenom du personnel
+            </summary>
+        </member>
+        <member name="P:MediaTek.model.Personnel.Tel">
+            <summary>
+            Getter sur le tel du personnel
+            </summary>
+        </member>
+        <member name="P:MediaTek.model.Personnel.Mail">
+            <summary>
+            Getter sur le mail du personnel
+            </summary>
+        </member>
+        <member name="P:MediaTek.model.Personnel.idService">
+            <summary>
+            Getter sur l'id du service associé au personnel
+            </summary>
+        </member>
+        <member name="P:MediaTek.model.Personnel.Service">
+            <summary>
+            Getter sur le nom du service associé au personnel
+            </summary>
+        </member>
+        <member name="M:MediaTek.model.Personnel.#ctor(System.Int32,System.String,System.String,System.String,System.String,System.Int32,System.String)">
+            <summary>
+            Constructeur de Personnel
+            </summary>
+            <param name="idpersonnel">id du personnel</param>
+            <param name="nom">nom du personnel</param>
+            <param name="prenom">prenom du personnel</param>
+            <param name="tel">tel du personnel </param>
+            <param name="mail">mail du personnel</param>
+            <param name="idservice">id du service du personnel</param>*
+            <param name="service">service associé au personnel</param>
+        </member>
+        <member name="T:MediaTek.model.Service">
+            <summary>
+            Classe permettant de gérer les services
+            </summary>
+        </member>
+        <member name="P:MediaTek.model.Service.idService">
+            <summary>
+            Getter sur l'id du service 
+            </summary>
+        </member>
+        <member name="P:MediaTek.model.Service.Nom">
+            <summary>
+            Getter sur le nom du service 
+            </summary>
+        </member>
+        <member name="M:MediaTek.model.Service.#ctor(System.Int32,System.String)">
+            <summary>
+            Constructeur de service
+            </summary>
+            <param name="idservice">id du service</param>
+            <param name="nom">nom du service</param>
+        </member>
+        <member name="M:MediaTek.model.Service.ToString">
+            <summary>
+            Définit l'information à afficher
+            </summary>
+            <returns>nom du service</returns>
+        </member>
+        <member name="T:MediaTek.view.FrmAbsences">
+            <summary>
+            Formulaire de gestion des absences 
+            </summary>
+        </member>
+        <member name="F:MediaTek.view.FrmAbsences.controle">
+            <summary>
+            Instance du controleur
+            </summary>
+        </member>
+        <member name="F:MediaTek.view.FrmAbsences.enCoursDeModif">
+            <summary>
+            Booléan pour savoir si une modification est en cours
+            </summary>
+        </member>
+        <member name="F:MediaTek.view.FrmAbsences.idpersonnelSelect">
+            <summary>
+            Initialisation de la variable idpersonnel 
+            </summary>
+        </member>
+        <member name="F:MediaTek.view.FrmAbsences.bdgAbsences">
+            <summary>
+            Objet pour gérer la liste des personnels 
+            </summary>
+        </member>
+        <member name="F:MediaTek.view.FrmAbsences.bdgMotifs">
+            <summary>
+            Objet pour gérer la liste des services 
+            </summary>
+        </member>
+        <member name="M:MediaTek.view.FrmAbsences.#ctor(MediaTek.controleur.Controle,System.Int32,System.String,System.String)">
+            <summary>
+            Initialisation des composants graphiques
+            </summary>
+            <param name="controle"></param>
+            <param name="idPersonnel">id du personnel concerné par les absences</param>
+            <param name="nom">nom du personnel concerné par les absences</param>
+            <param name="prenom">prenom du personnel concerné par les absences</param>
+        </member>
+        <member name="M:MediaTek.view.FrmAbsences.Init">
+            <summary>
+            Initialisation de la fenêtre
+            </summary>
+        </member>
+        <member name="M:MediaTek.view.FrmAbsences.EnCoursModif(System.Boolean)">
+            <summary>
+            Modification de l'affichage suivant si on est en cours de modification ou non
+            </summary>
+            <param name="modif">booléen</param>
+        </member>
+        <member name="M:MediaTek.view.FrmAbsences.RemplirDGVAbsences(System.Int32)">
+            <summary>
+            Affiche les absences
+            </summary>
+            <param name="idpersonnelSelect">Id du personnel sélectionné</param>
+        </member>
+        <member name="M:MediaTek.view.FrmAbsences.RemplirCBOMotifs">
+            <summary>
+            Initialisations : remplissage du combo
+            </summary>
+        </member>
+        <member name="M:MediaTek.view.FrmAbsences.btnModifAbs_Click(System.Object,System.EventArgs)">
+            <summary>
+            Demande de modification d'une absence
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MediaTek.view.FrmAbsences.btnEnregAbs_Click(System.Object,System.EventArgs)">
+            <summary>
+            Demande d'enregistrement de l'ajout ou de la modification d'une absence
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MediaTek.view.FrmAbsences.btnAnnAbs_Click(System.Object,System.EventArgs)">
+            <summary>
+            Annule la demande d'ajout ou modification d'une absence
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MediaTek.view.FrmAbsences.btnSuppAbs_Click(System.Object,System.EventArgs)">
+            <summary>
+            Demande de suppression d'une absence
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:MediaTek.view.FrmAbsences.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:MediaTek.view.FrmAbsences.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:MediaTek.view.FrmAbsences.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:MediaTek.view.FrmAuthentification">
+            <summary>
+            Fenêtre d'authentification
+            </summary>
+        </member>
+        <member name="F:MediaTek.view.FrmAuthentification.controle">
+            <summary>
+            Instance de la classe controle 
+            </summary>
+        </member>
+        <member name="M:MediaTek.view.FrmAuthentification.#ctor(MediaTek.controleur.Controle)">
+            <summary>
+            Constructeur 
+            </summary>
+            <param name="controle"></param>
+        </member>
+        <member name="F:MediaTek.view.FrmAuthentification.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:MediaTek.view.FrmAuthentification.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:MediaTek.view.FrmAuthentification.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:MediaTek.view.FrmMediaTek">
+            <summary>
+            Formulaire d'affichage des informations des personnels
+            </summary>
+        </member>
+        <member name="F:MediaTek.view.FrmMediaTek.controle">
+            <summary>
+            Instance du controleur
+            </summary>
+        </member>
+        <member name="F:MediaTek.view.FrmMediaTek.enCoursDeModif">
+            <summary>
+            Booléen pour savoir si une modification est demandée 
+            </summary>
+        </member>
+        <member name="F:MediaTek.view.FrmMediaTek.bdgPersonnels">
+            <summary>
+            Objet pour gérer la liste des personnels 
+            </summary>
+        </member>
+        <member name="F:MediaTek.view.FrmMediaTek.bdgService">
+            <summary>
+            Objet pour gérer la liste des services 
+            </summary>
+        </member>
+        <member name="M:MediaTek.view.FrmMediaTek.#ctor(MediaTek.controleur.Controle)">
+            <summary>
+            Initialisation des composants graphiques
+            </summary>
+            <param name="controle"></param>
+        </member>
+        <member name="M:MediaTek.view.FrmMediaTek.Init">
+            <summary>
+            Initialisations : 
+            Remplissage des listes 
+            </summary>
+        </member>
+        <member name="M:MediaTek.view.FrmMediaTek.RemplirDGVPersonnels">
+            <summary>
+            Affiche les personnels 
+            </summary>
+        </member>
+        <member name="M:MediaTek.view.FrmMediaTek.RemplirCBOServices">
+            <summary>
+            Initialisations : 
+            Remplissage du combo
+            </summary>
+        </member>
+        <member name="M:MediaTek.view.FrmMediaTek.EnCoursModif(System.Boolean)">
+            <summary>
+            Modification de l'affichage suivant si on est en cours de modification ou non
+            </summary>
+            <param name="modif">booléen</param>
+        </member>
+        <member name="M:MediaTek.view.FrmMediaTek.btnModifPers_Click(System.Object,System.EventArgs)">
+            <summary>
+            Demande de modification d'un personnel
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MediaTek.view.FrmMediaTek.btnEnregPers_Click(System.Object,System.EventArgs)">
+            <summary>
+            Demande d'enregistrement de l'ajout ou de la modification d'un personnel
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MediaTek.view.FrmMediaTek.btnAnnPers_Click(System.Object,System.EventArgs)">
+            <summary>
+            Annule la demande d'ajout ou de modification d'un développeur 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MediaTek.view.FrmMediaTek.btnSuppPers_Click(System.Object,System.EventArgs)">
+            <summary>
+            Demande de suppression d'un personnel
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:MediaTek.view.FrmMediaTek.components">
+            <summary>
+            Variable nécessaire au concepteur.
+            </summary>
+        </member>
+        <member name="M:MediaTek.view.FrmMediaTek.Dispose(System.Boolean)">
+            <summary>
+            Nettoyage des ressources utilisées.
+            </summary>
+            <param name="disposing">true si les ressources managées doivent être supprimées ; sinon, false.</param>
+        </member>
+        <member name="M:MediaTek.view.FrmMediaTek.InitializeComponent">
+            <summary>
+            Méthode requise pour la prise en charge du concepteur - ne modifiez pas
+            le contenu de cette méthode avec l'éditeur de code.
+            </summary>
+        </member>
+        <member name="T:MediaTek.Program">
+            <summary>
+            Programme MediaTek
+            </summary>
+        </member>
+        <member name="M:MediaTek.Program.Main">
+            <summary>
+            Point d'entrée principal de l'application.
+            </summary>
+        </member>
+        <member name="T:MediaTek.Properties.Resources">
+            <summary>
+              Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
+            </summary>
+        </member>
+        <member name="P:MediaTek.Properties.Resources.ResourceManager">
+            <summary>
+              Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
+            </summary>
+        </member>
+        <member name="P:MediaTek.Properties.Resources.Culture">
+            <summary>
+              Remplace la propriété CurrentUICulture du thread actuel pour toutes
+              les recherches de ressources à l'aide de cette classe de ressource fortement typée.
+            </summary>
+        </member>
+    </members>
+</doc>

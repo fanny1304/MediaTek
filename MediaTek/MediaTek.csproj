@@ -108,6 +108,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="documentation\Documentation.chm" />
     <None Include="mediatekDataSet.xsc">
       <DependentUpon>mediatekDataSet.xsd</DependentUpon>
     </None>
@@ -132,6 +133,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="documentation\MediaTek.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
