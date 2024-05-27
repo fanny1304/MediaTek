@@ -258,7 +258,7 @@ namespace MediaTek.view
             this.dgvPersonnels.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPersonnels.Location = new System.Drawing.Point(12, 37);
             this.dgvPersonnels.Name = "dgvPersonnels";
-            this.dgvPersonnels.Size = new System.Drawing.Size(578, 221);
+            this.dgvPersonnels.Size = new System.Drawing.Size(590, 221);
             this.dgvPersonnels.TabIndex = 8;
             // 
             // FrmMediaTek
